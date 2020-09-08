@@ -1,0 +1,20 @@
+{
+  "name": "guild2-build",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/noriaki/guild2-build.git"
+  },
+  "keywords": [],
+  "author": "Noriaki Uchiyama <uchiyama.noriaki@gmail.com> (https://github.com/noriaki)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/noriaki/guild2-build/issues"
+  },
+  "homepage": "https://github.com/noriaki/guild2-build#readme"
+}
