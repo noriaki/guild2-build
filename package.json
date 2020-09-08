@@ -16,5 +16,14 @@
   "bugs": {
     "url": "https://github.com/noriaki/guild2-build/issues"
   },
-  "homepage": "https://github.com/noriaki/guild2-build#readme"
+  "homepage": "https://github.com/noriaki/guild2-build#readme",
+  "dependencies": {
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  },
+  "devDependencies": {
+    "@types/node": "^14.6.4",
+    "@types/react": "^16.9.49",
+    "@types/react-dom": "^16.9.8"
+  }
 }
