@@ -17,6 +17,12 @@
     "url": "https://github.com/noriaki/guild2-build/issues"
   },
   "homepage": "https://github.com/noriaki/guild2-build#readme",
+  "scripts": {
+    "type-check": "tsc --noEmit",
+    "test": "jest",
+    "coverage": "jest --coverage",
+    "lint": "eslint --ext .ts,.tsx src"
+  },
   "dependencies": {
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
