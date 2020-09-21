@@ -26,7 +26,8 @@
     "next": "^9.5.3",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-konva": "^16.13.0-6"
+    "react-konva": "^16.13.0-6",
+    "use-image": "^1.0.6"
   },
   "devDependencies": {
     "@types/jest": "^26.0.13",
