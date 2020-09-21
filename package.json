@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "type-check": "tsc --noEmit",
+    "test": "jest",
+    "coverage": "jest --coverage",
+    "lint": "eslint --ext .ts,.tsx src"
   },
   "repository": {
     "type": "git",
@@ -17,13 +20,8 @@
     "url": "https://github.com/noriaki/guild2-build/issues"
   },
   "homepage": "https://github.com/noriaki/guild2-build#readme",
-  "scripts": {
-    "type-check": "tsc --noEmit",
-    "test": "jest",
-    "coverage": "jest --coverage",
-    "lint": "eslint --ext .ts,.tsx src"
-  },
   "dependencies": {
+    "next": "^9.5.3",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
   },
