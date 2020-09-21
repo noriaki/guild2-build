@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "dev": "next dev --port=3399",
     "type-check": "tsc --noEmit",
     "test": "jest",
     "coverage": "jest --coverage",
