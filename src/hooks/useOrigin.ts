@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import origins from '~/data/origin';
+import origins from '~/data/origins';
 
 export type OriginKeys = keyof typeof origins;
 export type OriginValues = typeof origins[OriginKeys][number];
