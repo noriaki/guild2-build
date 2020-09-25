@@ -27,6 +27,7 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-konva": "^16.13.0-6",
+    "unstated-next": "^1.1.0",
     "use-image": "^1.0.6"
   },
   "devDependencies": {
