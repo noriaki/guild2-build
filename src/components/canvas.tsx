@@ -1,13 +1,13 @@
 import React from 'react';
 import { Stage, Layer, Image } from 'react-konva';
-import useImage from 'use-image';
 
+import useCharactorIcon from '~/hooks/useCharactorIcon';
 import CharactorContainer from '~/containers/CharactorContainer';
 import TextRect from './text-rect';
 
 const Canvas = () => {
-  const [image] = useImage('/icons/royalline.png');
   const { origin, job, personality } = CharactorContainer.useContainer();
+  const image = useCharactorIcon(origin, job);
 
   return (
     <Stage width={120} height={120}>
