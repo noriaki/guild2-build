@@ -7,7 +7,7 @@ import TextRect from './text-rect';
 
 const Canvas = () => {
   const [image] = useImage('/icons/royalline.png');
-  const { origin, job } = CharactorContainer.useContainer();
+  const { origin, job, personality } = CharactorContainer.useContainer();
 
   return (
     <Stage width={120} height={120}>
@@ -15,7 +15,7 @@ const Canvas = () => {
         <Image image={image} />
         {origin && <TextRect x={2} y={12} text={origin} />}
         {job && <TextRect x={2} y={48} text={job} />}
-        <TextRect x={2} y={84} text="エ" />
+        {personality && <TextRect x={2} y={84} text={personality} />}
       </Layer>
     </Stage>
   );

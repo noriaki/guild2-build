@@ -8,9 +8,12 @@ const Form = () => {
     selectOrigin,
     getJobKeys,
     selectJob,
+    getPersonalityKeys,
+    selectPersonality,
   } = CharactorContainer.useContainer();
   const onChangeOrigin = (e) => selectOrigin(e.target.value);
   const onChangeJob = (e) => selectJob(e.target.value);
+  const onChangePersonality = (e) => selectPersonality(e.target.value);
 
   return (
     <div>
@@ -42,6 +45,22 @@ const Form = () => {
                 onChange={onChangeJob}
               />
               {job}
+            </label>
+          </li>
+        ))}
+      </ul>
+      <h2>個性</h2>
+      <ul>
+        {getPersonalityKeys().map((personality) => (
+          <li key={personality}>
+            <label>
+              <input
+                type="radio"
+                name="personality"
+                value={personality}
+                onChange={onChangePersonality}
+              />
+              {personality}
             </label>
           </li>
         ))}
