@@ -5,7 +5,7 @@ import jobs from '~/data/jobs';
 export type JobKeys = keyof typeof jobs;
 export type JobValues = typeof jobs[JobKeys];
 
-const useJob = (initialValue: JobValues) => {
+const useJob = (initialValue?: JobValues) => {
   const [job, setJob] = useState<JobValues>(initialValue);
 
   const selectJob = (jobKey: JobKeys) => {

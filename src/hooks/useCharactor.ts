@@ -3,16 +3,14 @@ import useJob, { JobValues } from './useJob';
 import useSubJob, { SubJobValues } from './useSubJub';
 import usePersonality, { PersonalityValues } from './usePersonality';
 
-type CharactorValues =
-  | {
-      origin: OriginValues;
-      job: JobValues;
-      subJob: SubJobValues;
-      personality: PersonalityValues;
-    }
-  | undefined;
+export type CharactorValues = {
+  origin: OriginValues;
+  job: JobValues;
+  subJob: SubJobValues;
+  personality: PersonalityValues;
+};
 
-const useCharactor = (initialValues: CharactorValues) => {
+const useCharactor = (initialValues?: CharactorValues) => {
   const origins = useOrigin(initialValues?.origin);
   const jobs = useJob(initialValues?.job);
   const subJobs = useSubJob(initialValues?.subJob);
