@@ -1,6 +1,12 @@
-import React from 'react';
+import React, { ChangeEvent } from 'react';
 
 import CharactorContainer from '~/containers/CharactorContainer';
+import { JobKeys } from '~/hooks/useJob';
+import { OriginKeys } from '~/hooks/useOrigin';
+import { PersonalityKeys } from '~/hooks/usePersonality';
+import { SubJobKeys } from '~/hooks/useSubJub';
+
+type ChangeEventOfInput = ChangeEvent<HTMLInputElement>;
 
 const Form = () => {
   const {
@@ -13,10 +19,15 @@ const Form = () => {
     getPersonalityKeys,
     selectPersonality,
   } = CharactorContainer.useContainer();
-  const onChangeOrigin = (e) => selectOrigin(e.target.value);
-  const onChangeJob = (e) => selectJob(e.target.value);
-  const onChangeSubJob = (e) => selectSubJob(e.target.value);
-  const onChangePersonality = (e) => selectPersonality(e.target.value);
+
+  const onChangeOrigin = (e: ChangeEventOfInput) =>
+    selectOrigin(e.target.value as OriginKeys);
+  const onChangeJob = (e: ChangeEventOfInput) =>
+    selectJob(e.target.value as JobKeys);
+  const onChangeSubJob = (e: ChangeEventOfInput) =>
+    selectSubJob(e.target.value as SubJobKeys);
+  const onChangePersonality = (e: ChangeEventOfInput) =>
+    selectPersonality(e.target.value as PersonalityKeys);
 
   return (
     <div>

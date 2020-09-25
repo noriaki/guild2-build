@@ -7,8 +7,12 @@ import { OriginValues } from './useOrigin';
 export type IconKeys = keyof typeof icons;
 export type IconValues = typeof icons[IconKeys];
 
-const useCharactorIcon = (origin: OriginValues, job: JobValues) => {
-  const filename = origin && job ? icons[`${origin}${job}`] : 'default.png';
+const useCharactorIcon = (origin?: OriginValues, job?: JobValues) => {
+  let filename: IconValues | 'default.png' = 'default.png';
+  if (origin && job) {
+    const key = `${origin}${job}` as IconKeys;
+    filename = icons[key];
+  }
   const [image] = useImage(`/icons/${filename}`);
   return image;
 };

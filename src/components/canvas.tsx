@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import { Stage, Layer, Image } from 'react-konva';
+import Konva from 'konva';
 
 import useCharactorIcon from '~/hooks/useCharactorIcon';
 import CharactorContainer from '~/containers/CharactorContainer';
@@ -16,10 +17,10 @@ const Canvas = () => {
   const image = useCharactorIcon(origin, job);
   const disable = getCharactorText() === '';
 
-  const ref = useRef(null);
+  const ref = useRef<Konva.Stage>(null);
   const onClickToImageDL = () => {
     const charText = getCharactorText();
-    if (charText !== '') {
+    if (charText !== '' && ref.current != null) {
       const link = document.createElement('a');
       link.download = `冒ギル2-${charText}.png`;
       link.href = ref.current.toDataURL();

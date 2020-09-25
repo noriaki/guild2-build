@@ -1,9 +1,9 @@
 import { createContainer } from 'unstated-next';
 
-import useCharactorOriginal from '~/hooks/useCharactor';
+import useCharactorOriginal, { CharactorValues } from '~/hooks/useCharactor';
 
-const useCharactor = (...args) => {
-  const chars = useCharactorOriginal(...args);
+const useCharactor = (initialValues?: CharactorValues) => {
+  const chars = useCharactorOriginal(initialValues);
   const { origin, job, subJob, personality } = chars;
 
   let jobText: string | null = null;
