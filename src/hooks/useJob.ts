@@ -9,9 +9,9 @@ const useJob = (initialValue: JobValues) => {
   const [job, setJob] = useState<JobValues>(initialValue);
 
   const selectJob = (jobKey: JobKeys) => {
-    const values = jobs[jobKey];
-    setJob(values[0]);
-    return values;
+    const value = jobs[jobKey];
+    setJob(value);
+    return value;
   };
 
   const getJobKeys = () => Object.keys(jobs);
