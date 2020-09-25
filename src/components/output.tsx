@@ -5,6 +5,7 @@ import CharactorContainer from '~/containers/CharactorContainer';
 const Output = () => {
   const { getCharactorText } = CharactorContainer.useContainer();
   const charText = getCharactorText();
+  const disable = charText === '';
 
   const onClickToCopy = () => {
     if (charText !== '') {
@@ -22,7 +23,12 @@ const Output = () => {
   return (
     <div>
       <input type="text" value={charText} readOnly />
-      <input type="button" value="コピー" onClick={onClickToCopy} />
+      <input
+        type="button"
+        value="コピー"
+        disabled={disable}
+        onClick={onClickToCopy}
+      />
     </div>
   );
 };

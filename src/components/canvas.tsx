@@ -14,6 +14,7 @@ const Canvas = () => {
     getCharactorText,
   } = CharactorContainer.useContainer();
   const image = useCharactorIcon(origin, job);
+  const disable = getCharactorText() === '';
 
   const ref = useRef(null);
   const onClickToImageDL = () => {
@@ -38,7 +39,14 @@ const Canvas = () => {
           {personality && <TextRect x={2} y={84} text={personality} />}
         </Layer>
       </Stage>
-      <input type="button" value="画像DL" onClick={onClickToImageDL} />
+      <p>
+        <input
+          type="button"
+          value="画像DL"
+          disabled={disable}
+          onClick={onClickToImageDL}
+        />
+      </p>
     </div>
   );
 };
