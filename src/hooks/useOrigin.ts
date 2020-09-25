@@ -6,7 +6,7 @@ export type OriginKeys = keyof typeof origins;
 export type OriginValues = typeof origins[OriginKeys][number];
 
 const useOrigin = (initialValue?: OriginValues) => {
-  const [origin, setOrigin] = useState<OriginValues>(initialValue);
+  const [origin, setOrigin] = useState(initialValue);
 
   const selectOrigin = (originKey: OriginKeys) => {
     const values = origins[originKey];

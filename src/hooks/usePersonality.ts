@@ -6,9 +6,7 @@ export type PersonalityKeys = keyof typeof personalities;
 export type PersonalityValues = typeof personalities[PersonalityKeys];
 
 const usePersonality = (initialValue?: PersonalityValues) => {
-  const [personality, setPersonality] = useState<PersonalityValues>(
-    initialValue,
-  );
+  const [personality, setPersonality] = useState(initialValue);
 
   const selectPersonality = (personalityKey: PersonalityKeys) => {
     const value = personalities[personalityKey];

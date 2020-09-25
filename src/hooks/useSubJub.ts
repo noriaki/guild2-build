@@ -11,7 +11,7 @@ export type SubJobKeys = keyof typeof subJobs;
 export type SubJobValues = typeof subJobs[SubJobKeys];
 
 const useSubJob = (initialValue?: SubJobValues) => {
-  const [subJob, setSubJob] = useState<SubJobValues>(initialValue);
+  const [subJob, setSubJob] = useState(initialValue);
 
   const selectSubJob = (subJobKey: SubJobKeys) => {
     const value = subJobs[subJobKey];
