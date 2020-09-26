@@ -14,18 +14,16 @@ const useJob = (initialValue?: JobValues) => {
     return value;
   };
 
-  const getJobKeys = (): JobKeys[] => Object.keys(jobs);
+  const getJobKeys = (): JobKeys[] => Object.keys(jobs) as JobKeys[];
 
-  const getJobKey = (): JobKeys =>
-    Object.entries(jobs).reduce(
-      (ret: JobKeys | null, [key, value]: [JobKeys, JobValues]) => {
-        if (job === value) {
-          ret = key;
-        }
-        return ret;
-      },
-      null,
-    );
+  const getJobKey = (): JobKeys | null => {
+    for (const [key, value] of Object.entries(jobs) as [JobKeys, JobValues][]) {
+      if (job === value) {
+        return key;
+      }
+    }
+    return null;
+  };
 
   return {
     job,
