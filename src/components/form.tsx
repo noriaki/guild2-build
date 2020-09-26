@@ -6,10 +6,15 @@ import { OriginKeys } from '~/hooks/useOrigin';
 import { PersonalityKeys } from '~/hooks/usePersonality';
 import { SubJobKeys } from '~/hooks/useSubJub';
 
+// components
+import ChipItems from './ChipItems';
+
+// types
 type ChangeEventOfInput = ChangeEvent<HTMLInputElement>;
 
 const Form = () => {
   const {
+    getOriginKey,
     getOriginKeys,
     selectOrigin,
     getJobKey,
@@ -21,10 +26,8 @@ const Form = () => {
     selectPersonality,
   } = CharactorContainer.useContainer();
 
-  const onChangeOrigin = (e: ChangeEventOfInput) =>
-    selectOrigin(e.target.value as OriginKeys);
-  const onChangeJob = (e: ChangeEventOfInput) =>
-    selectJob(e.target.value as JobKeys);
+  const onChangeOrigin = (value: OriginKeys) => selectOrigin(value);
+  const onChangeJob = (value: JobKeys) => selectJob(value);
   const onChangeSubJob = (e: ChangeEventOfInput) =>
     selectSubJob(e.target.value as SubJobKeys);
   const onChangePersonality = (e: ChangeEventOfInput) =>
@@ -36,35 +39,19 @@ const Form = () => {
     <div>
       <h2>種族</h2>
       <ul>
-        {getOriginKeys().map((origin) => (
-          <li key={origin}>
-            <label>
-              <input
-                type="radio"
-                name="origin"
-                value={origin}
-                onChange={onChangeOrigin}
-              />
-              {origin}
-            </label>
-          </li>
-        ))}
+        <ChipItems
+          items={getOriginKeys()}
+          selectedItem={getOriginKey()}
+          onChange={onChangeOrigin}
+        />
       </ul>
       <h2>職業(現職)</h2>
       <ul>
-        {getJobKeys().map((job) => (
-          <li key={job}>
-            <label>
-              <input
-                type="radio"
-                name="job"
-                value={job}
-                onChange={onChangeJob}
-              />
-              {job}
-            </label>
-          </li>
-        ))}
+        <ChipItems
+          items={getJobKeys()}
+          selectedItem={getJobKey()}
+          onChange={onChangeJob}
+        />
       </ul>
       <h2>職業(前職)</h2>
       <ul>
