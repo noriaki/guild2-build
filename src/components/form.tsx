@@ -12,6 +12,7 @@ const Form = () => {
   const {
     getOriginKeys,
     selectOrigin,
+    getJobKey,
     getJobKeys,
     selectJob,
     getSubJobKeys,
@@ -28,6 +29,8 @@ const Form = () => {
     selectSubJob(e.target.value as SubJobKeys);
   const onChangePersonality = (e: ChangeEventOfInput) =>
     selectPersonality(e.target.value as PersonalityKeys);
+
+  const jobKey = getJobKey();
 
   return (
     <div>
@@ -65,19 +68,22 @@ const Form = () => {
       </ul>
       <h2>職業(前職)</h2>
       <ul>
-        {getSubJobKeys().map((subJob) => (
-          <li key={subJob}>
-            <label>
-              <input
-                type="radio"
-                name="subJob"
-                value={subJob}
-                onChange={onChangeSubJob}
-              />
-              {subJob}
-            </label>
-          </li>
-        ))}
+        {getSubJobKeys().map(
+          (subJob) =>
+            (jobKey === null || jobKey !== subJob) && (
+              <li key={subJob}>
+                <label>
+                  <input
+                    type="radio"
+                    name="subJob"
+                    value={subJob}
+                    onChange={onChangeSubJob}
+                  />
+                  {subJob}
+                </label>
+              </li>
+            ),
+        )}
       </ul>
       <h2>個性</h2>
       <ul>
