@@ -1,4 +1,4 @@
-import React, { ChangeEvent } from 'react';
+import React from 'react';
 
 import CharactorContainer from '~/containers/CharactorContainer';
 import { JobKeys } from '~/hooks/useJob';
@@ -8,9 +8,6 @@ import { SubJobKeys } from '~/hooks/useSubJub';
 
 // components
 import ChipItems from './ChipItems';
-
-// types
-type ChangeEventOfInput = ChangeEvent<HTMLInputElement>;
 
 const Form = () => {
   const {
@@ -31,7 +28,8 @@ const Form = () => {
   const onChangeOrigin = (value: OriginKeys) => selectOrigin(value);
   const onChangeJob = (value: JobKeys) => selectJob(value);
   const onChangeSubJob = (value: SubJobKeys) => selectSubJob(value);
-  const onChangePersonality = (value: PersonalityKeys) => selectPersonality(value);
+  const onChangePersonality = (value: PersonalityKeys) =>
+    selectPersonality(value);
 
   const jobKey = getJobKey();
 
