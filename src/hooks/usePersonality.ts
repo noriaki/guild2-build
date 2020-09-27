@@ -16,10 +16,23 @@ const usePersonality = (initialValue?: PersonalityValues) => {
 
   const getPersonalityKeys = () => Object.keys(personalities);
 
+  const getPersonalityKey = (): PersonalityKeys | null => {
+    for (const [key, value] of Object.entries(personalities) as [
+      PersonalityKeys,
+      PersonalityValues,
+    ][]) {
+      if (personality === value) {
+        return key;
+      }
+    }
+    return null;
+  };
+
   return {
     personality,
     setPersonality,
     selectPersonality,
+    getPersonalityKey,
     getPersonalityKeys,
   };
 };

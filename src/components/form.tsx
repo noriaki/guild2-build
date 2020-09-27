@@ -20,18 +20,18 @@ const Form = () => {
     getJobKey,
     getJobKeys,
     selectJob,
+    getSubJobKey,
     getSubJobKeys,
     selectSubJob,
+    getPersonalityKey,
     getPersonalityKeys,
     selectPersonality,
   } = CharactorContainer.useContainer();
 
   const onChangeOrigin = (value: OriginKeys) => selectOrigin(value);
   const onChangeJob = (value: JobKeys) => selectJob(value);
-  const onChangeSubJob = (e: ChangeEventOfInput) =>
-    selectSubJob(e.target.value as SubJobKeys);
-  const onChangePersonality = (e: ChangeEventOfInput) =>
-    selectPersonality(e.target.value as PersonalityKeys);
+  const onChangeSubJob = (value: SubJobKeys) => selectSubJob(value);
+  const onChangePersonality = (value: PersonalityKeys) => selectPersonality(value);
 
   const jobKey = getJobKey();
 
@@ -49,44 +49,26 @@ const Form = () => {
       <ul>
         <ChipItems
           items={getJobKeys()}
-          selectedItem={getJobKey()}
+          selectedItem={jobKey}
           onChange={onChangeJob}
         />
       </ul>
       <h2>職業(前職)</h2>
       <ul>
-        {getSubJobKeys().map(
-          (subJob) =>
-            (jobKey === null || jobKey !== subJob) && (
-              <li key={subJob}>
-                <label>
-                  <input
-                    type="radio"
-                    name="subJob"
-                    value={subJob}
-                    onChange={onChangeSubJob}
-                  />
-                  {subJob}
-                </label>
-              </li>
-            ),
-        )}
+        <ChipItems
+          items={getSubJobKeys()}
+          selectedItem={getSubJobKey()}
+          ignoredItem={jobKey}
+          onChange={onChangeSubJob}
+        />
       </ul>
       <h2>個性</h2>
       <ul>
-        {getPersonalityKeys().map((personality) => (
-          <li key={personality}>
-            <label>
-              <input
-                type="radio"
-                name="personality"
-                value={personality}
-                onChange={onChangePersonality}
-              />
-              {personality}
-            </label>
-          </li>
-        ))}
+        <ChipItems
+          items={getPersonalityKeys()}
+          selectedItem={getPersonalityKey()}
+          onChange={onChangePersonality}
+        />
       </ul>
     </div>
   );
