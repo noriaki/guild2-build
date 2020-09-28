@@ -11,7 +11,6 @@ const useJob = (initialValue?: JobValues) => {
   const selectJob = (jobKey: JobKeys) => {
     const value = jobs[jobKey];
     setJob(value);
-    return value;
   };
 
   const getJobKeys = (): JobKeys[] => Object.keys(jobs) as JobKeys[];

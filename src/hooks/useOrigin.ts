@@ -11,7 +11,6 @@ const useOrigin = (initialValue?: OriginValues) => {
   const selectOrigin = (originKey: OriginKeys) => {
     const values = origins[originKey];
     setOrigin(values[0]);
-    return values;
   };
 
   const getOriginKeys = (): OriginKeys[] =>

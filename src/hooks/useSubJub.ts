@@ -16,10 +16,10 @@ const useSubJob = (initialValue?: SubJobValues) => {
   const selectSubJob = (subJobKey: SubJobKeys) => {
     const value = subJobs[subJobKey];
     setSubJob(value);
-    return value;
   };
 
-  const getSubJobKeys = () => Object.keys(subJobs);
+  const getSubJobKeys = (): SubJobKeys[] =>
+    Object.keys(subJobs) as SubJobKeys[];
 
   const getSubJobKey = (): SubJobKeys | null => {
     for (const [key, value] of Object.entries(subJobs) as [
