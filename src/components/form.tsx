@@ -6,6 +6,9 @@ import { OriginKeys } from '~/hooks/useOrigin';
 import { PersonalityKeys } from '~/hooks/usePersonality';
 import { SubJobKeys } from '~/hooks/useSubJub';
 
+// material-ui
+import Typography from '@material-ui/core/Typography';
+
 // components
 import ChipItems from './ChipItems';
 
@@ -23,6 +26,9 @@ const useStyles = makeStyles((theme: Theme) =>
       '& > li': {
         margin: theme.spacing(0.5),
       },
+    },
+    title: {
+      margin: theme.spacing(4, 0, 1),
     },
   }),
 );
@@ -55,7 +61,9 @@ const Form = () => {
 
   return (
     <div>
-      <h2>種族</h2>
+      <Typography component="h2" variant="h4" className={styles.title}>
+        種族
+      </Typography>
       <ul className={styles.itemContainer}>
         <ChipItems
           items={getOriginKeys()}
@@ -63,7 +71,9 @@ const Form = () => {
           onChange={onChangeOrigin}
         />
       </ul>
-      <h2>職業(現職)</h2>
+      <Typography component="h2" variant="h4" className={styles.title}>
+        職業(現職)
+      </Typography>
       <ul className={styles.itemContainer}>
         <ChipItems
           items={getJobKeys()}
@@ -71,7 +81,9 @@ const Form = () => {
           onChange={onChangeJob}
         />
       </ul>
-      <h2>職業(前職)</h2>
+      <Typography component="h2" variant="h4" className={styles.title}>
+        職業(前職)
+      </Typography>
       <ul className={styles.itemContainer}>
         <ChipItems
           items={getSubJobKeys()}
@@ -80,7 +92,9 @@ const Form = () => {
           onChange={onChangeSubJob}
         />
       </ul>
-      <h2>個性</h2>
+      <Typography component="h2" variant="h4" className={styles.title}>
+        個性
+      </Typography>
       <ul className={styles.itemContainer}>
         <ChipItems
           items={getPersonalityKeys()}
