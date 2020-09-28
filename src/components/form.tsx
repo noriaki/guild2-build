@@ -67,7 +67,7 @@ const Form = () => {
       <ul className={styles.itemContainer}>
         <ChipItems
           items={getJobKeys()}
-          selectedItem={jobKey}p
+          selectedItem={jobKey}
           onChange={onChangeJob}
         />
       </ul>
