@@ -8,9 +8,7 @@ import { SubJobKeys } from '~/hooks/useSubJub';
 
 // material-ui
 import Typography from '@material-ui/core/Typography';
-
-// components
-import ChipItems from './ChipItems';
+import Chip from '@material-ui/core/Chip';
 
 // styles
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
@@ -55,7 +53,10 @@ const Form = () => {
   const onChangePersonality = (value: PersonalityKeys) =>
     selectPersonality(value);
 
-  const jobKey = getJobKey();
+  const selectedOrigin = getOriginKey();
+  const selectedJob = getJobKey();
+  const selectedSubJob = getSubJobKey();
+  const selectedPersonality = getPersonalityKey();
 
   const styles = useStyles();
 
@@ -65,42 +66,70 @@ const Form = () => {
         種族
       </Typography>
       <ul className={styles.itemContainer}>
-        <ChipItems
-          items={getOriginKeys()}
-          selectedItem={getOriginKey()}
-          onChange={onChangeOrigin}
-        />
+        {getOriginKeys().map((origin) => (
+          <Chip
+            key={origin}
+            component="li"
+            clickable
+            label={origin}
+            variant={origin === selectedOrigin ? 'default' : 'outlined'}
+            color="primary"
+            onClick={() => onChangeOrigin(origin)}
+          />
+        ))}
       </ul>
       <Typography component="h2" variant="h4" className={styles.title}>
         職業(現職)
       </Typography>
       <ul className={styles.itemContainer}>
-        <ChipItems
-          items={getJobKeys()}
-          selectedItem={jobKey}
-          onChange={onChangeJob}
-        />
+        {getJobKeys().map((job) => (
+          <Chip
+            key={job}
+            component="li"
+            clickable
+            label={job}
+            variant={job === selectedJob ? 'default' : 'outlined'}
+            color="primary"
+            onClick={() => onChangeJob(job)}
+          />
+        ))}
       </ul>
       <Typography component="h2" variant="h4" className={styles.title}>
         職業(前職)
       </Typography>
       <ul className={styles.itemContainer}>
-        <ChipItems
-          items={getSubJobKeys()}
-          selectedItem={getSubJobKey()}
-          ignoredItem={jobKey}
-          onChange={onChangeSubJob}
-        />
+        {getSubJobKeys().map(
+          (subJob) =>
+            subJob !== selectedJob && (
+              <Chip
+                key={subJob}
+                component="li"
+                clickable
+                label={subJob}
+                variant={subJob === selectedSubJob ? 'default' : 'outlined'}
+                color="primary"
+                onClick={() => onChangeSubJob(subJob)}
+              />
+            ),
+        )}
       </ul>
       <Typography component="h2" variant="h4" className={styles.title}>
         個性
       </Typography>
       <ul className={styles.itemContainer}>
-        <ChipItems
-          items={getPersonalityKeys()}
-          selectedItem={getPersonalityKey()}
-          onChange={onChangePersonality}
-        />
+        {getPersonalityKeys().map((personality) => (
+          <Chip
+            key={personality}
+            component="li"
+            clickable
+            label={personality}
+            variant={
+              personality === selectedPersonality ? 'default' : 'outlined'
+            }
+            color="primary"
+            onClick={() => onChangePersonality(personality)}
+          />
+        ))}
       </ul>
     </div>
   );
