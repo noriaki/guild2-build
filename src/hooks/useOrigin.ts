@@ -11,15 +11,26 @@ const useOrigin = (initialValue?: OriginValues) => {
   const selectOrigin = (originKey: OriginKeys) => {
     const values = origins[originKey];
     setOrigin(values[0]);
-    return values;
   };
 
-  const getOriginKeys = () => Object.keys(origins);
+  const getOriginKeys = (): OriginKeys[] =>
+    Object.keys(origins) as OriginKeys[];
+
+  const getOriginKey = (): OriginKeys | null => {
+    const originKeys = Object.keys(origins) as OriginKeys[];
+    for (const key of originKeys) {
+      if (origins[key][0] === origin) {
+        return key;
+      }
+    }
+    return null;
+  };
 
   return {
     origin,
     setOrigin,
     selectOrigin,
+    getOriginKey,
     getOriginKeys,
   };
 };

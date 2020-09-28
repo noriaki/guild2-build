@@ -1,4 +1,4 @@
-import React, { ChangeEvent } from 'react';
+import React from 'react';
 
 import CharactorContainer from '~/containers/CharactorContainer';
 import { JobKeys } from '~/hooks/useJob';
@@ -6,93 +6,129 @@ import { OriginKeys } from '~/hooks/useOrigin';
 import { PersonalityKeys } from '~/hooks/usePersonality';
 import { SubJobKeys } from '~/hooks/useSubJub';
 
-type ChangeEventOfInput = ChangeEvent<HTMLInputElement>;
+// material-ui
+import Typography from '@material-ui/core/Typography';
+import Chip from '@material-ui/core/Chip';
+
+// styles
+import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
+
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    itemContainer: {
+      display: 'flex',
+      flexWrap: 'wrap',
+      listStyle: 'none',
+      margin: 0,
+      padding: theme.spacing(0.5),
+      '& > li': {
+        margin: theme.spacing(0.5),
+      },
+    },
+    title: {
+      margin: theme.spacing(4, 0, 1),
+    },
+  }),
+);
 
 const Form = () => {
   const {
+    getOriginKey,
     getOriginKeys,
     selectOrigin,
+    getJobKey,
     getJobKeys,
     selectJob,
+    getSubJobKey,
     getSubJobKeys,
     selectSubJob,
+    getPersonalityKey,
     getPersonalityKeys,
     selectPersonality,
   } = CharactorContainer.useContainer();
 
-  const onChangeOrigin = (e: ChangeEventOfInput) =>
-    selectOrigin(e.target.value as OriginKeys);
-  const onChangeJob = (e: ChangeEventOfInput) =>
-    selectJob(e.target.value as JobKeys);
-  const onChangeSubJob = (e: ChangeEventOfInput) =>
-    selectSubJob(e.target.value as SubJobKeys);
-  const onChangePersonality = (e: ChangeEventOfInput) =>
-    selectPersonality(e.target.value as PersonalityKeys);
+  const onChangeOrigin = (value: OriginKeys) => selectOrigin(value);
+  const onChangeJob = (value: JobKeys) => selectJob(value);
+  const onChangeSubJob = (value: SubJobKeys) => selectSubJob(value);
+  const onChangePersonality = (value: PersonalityKeys) =>
+    selectPersonality(value);
+
+  const selectedOrigin = getOriginKey();
+  const selectedJob = getJobKey();
+  const selectedSubJob = getSubJobKey();
+  const selectedPersonality = getPersonalityKey();
+
+  const styles = useStyles();
 
   return (
     <div>
-      <h2>種族</h2>
-      <ul>
+      <Typography component="h2" variant="h4" className={styles.title}>
+        種族
+      </Typography>
+      <ul className={styles.itemContainer}>
         {getOriginKeys().map((origin) => (
-          <li key={origin}>
-            <label>
-              <input
-                type="radio"
-                name="origin"
-                value={origin}
-                onChange={onChangeOrigin}
-              />
-              {origin}
-            </label>
-          </li>
+          <Chip
+            key={origin}
+            component="li"
+            clickable
+            label={origin}
+            variant={origin === selectedOrigin ? 'default' : 'outlined'}
+            color="primary"
+            onClick={() => onChangeOrigin(origin)}
+          />
         ))}
       </ul>
-      <h2>職業(現職)</h2>
-      <ul>
+      <Typography component="h2" variant="h4" className={styles.title}>
+        職業(現職)
+      </Typography>
+      <ul className={styles.itemContainer}>
         {getJobKeys().map((job) => (
-          <li key={job}>
-            <label>
-              <input
-                type="radio"
-                name="job"
-                value={job}
-                onChange={onChangeJob}
-              />
-              {job}
-            </label>
-          </li>
+          <Chip
+            key={job}
+            component="li"
+            clickable
+            label={job}
+            variant={job === selectedJob ? 'default' : 'outlined'}
+            color="primary"
+            onClick={() => onChangeJob(job)}
+          />
         ))}
       </ul>
-      <h2>職業(前職)</h2>
-      <ul>
-        {getSubJobKeys().map((subJob) => (
-          <li key={subJob}>
-            <label>
-              <input
-                type="radio"
-                name="subJob"
-                value={subJob}
-                onChange={onChangeSubJob}
+      <Typography component="h2" variant="h4" className={styles.title}>
+        職業(前職)
+      </Typography>
+      <ul className={styles.itemContainer}>
+        {getSubJobKeys().map(
+          (subJob) =>
+            subJob !== selectedJob && (
+              <Chip
+                key={subJob}
+                component="li"
+                clickable
+                label={subJob}
+                variant={subJob === selectedSubJob ? 'default' : 'outlined'}
+                color="primary"
+                onClick={() => onChangeSubJob(subJob)}
               />
-              {subJob}
-            </label>
-          </li>
-        ))}
+            ),
+        )}
       </ul>
-      <h2>個性</h2>
-      <ul>
+      <Typography component="h2" variant="h4" className={styles.title}>
+        個性
+      </Typography>
+      <ul className={styles.itemContainer}>
         {getPersonalityKeys().map((personality) => (
-          <li key={personality}>
-            <label>
-              <input
-                type="radio"
-                name="personality"
-                value={personality}
-                onChange={onChangePersonality}
-              />
-              {personality}
-            </label>
-          </li>
+          <Chip
+            key={personality}
+            component="li"
+            clickable
+            label={personality}
+            variant={
+              personality === selectedPersonality ? 'default' : 'outlined'
+            }
+            color="primary"
+            onClick={() => onChangePersonality(personality)}
+          />
         ))}
       </ul>
     </div>

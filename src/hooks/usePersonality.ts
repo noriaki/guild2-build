@@ -11,15 +11,28 @@ const usePersonality = (initialValue?: PersonalityValues) => {
   const selectPersonality = (personalityKey: PersonalityKeys) => {
     const value = personalities[personalityKey];
     setPersonality(value);
-    return value;
   };
 
-  const getPersonalityKeys = () => Object.keys(personalities);
+  const getPersonalityKeys = (): PersonalityKeys[] =>
+    Object.keys(personalities) as PersonalityKeys[];
+
+  const getPersonalityKey = (): PersonalityKeys | null => {
+    for (const [key, value] of Object.entries(personalities) as [
+      PersonalityKeys,
+      PersonalityValues,
+    ][]) {
+      if (personality === value) {
+        return key;
+      }
+    }
+    return null;
+  };
 
   return {
     personality,
     setPersonality,
     selectPersonality,
+    getPersonalityKey,
     getPersonalityKeys,
   };
 };
