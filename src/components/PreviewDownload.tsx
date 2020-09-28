@@ -10,7 +10,8 @@ import TextRect from './text-rect';
 
 // material-ui
 import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
 
 // styles
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
@@ -31,10 +32,14 @@ const useStyles = makeStyles((theme: Theme) =>
       flexDirection: 'column',
       justifyContent: 'space-around',
       borderLeft: `1px solid ${theme.palette.grey[100]}`,
+      padding: theme.spacing(2),
     },
     actions: {
       display: 'flex',
-      justifyContent: 'space-around',
+      justifyContent: 'space-between',
+    },
+    textFieldRoot: {
+      margin: 0,
     },
   }),
 );
@@ -93,23 +98,37 @@ const PreviewDownload = () => {
             </Layer>
           </Stage>
         </div>
-        <CardContent className={styles.output}>
-          <input type="text" value={charText} readOnly />
+        <div className={styles.output}>
+          <TextField
+            label="テキスト表記"
+            value={charText}
+            size="small"
+            margin="dense"
+            fullWidth
+            InputProps={{ readOnly: true }}
+            className={styles.textFieldRoot}
+          />
           <div className={styles.actions}>
-            <input
-              type="button"
-              value="コピー"
+            <Button
+              variant="contained"
+              size="small"
+              color="primary"
               disabled={disable}
               onClick={onClickToCopy}
-            />
-            <input
-              type="button"
-              value="画像DL"
+            >
+              テキストコピー
+            </Button>
+            <Button
+              variant="contained"
+              size="small"
+              color="primary"
               disabled={disable}
               onClick={onClickToImageDL}
-            />
+            >
+              画像DL
+            </Button>
           </div>
-        </CardContent>
+        </div>
       </Card>
     </div>
   );
