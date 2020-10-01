@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import origins from '~/data/origins';
+import origins, { originIcons } from '~/data/origins';
 
 export type OriginKeys = keyof typeof origins;
 export type OriginValues = typeof origins[OriginKeys][number];
@@ -26,12 +26,15 @@ const useOrigin = (initialValue?: OriginValues) => {
     return null;
   };
 
+  const getOriginIcon = (key: OriginKeys) => originIcons[key];
+
   return {
     origin,
     setOrigin,
     selectOrigin,
     getOriginKey,
     getOriginKeys,
+    getOriginIcon,
   };
 };
 

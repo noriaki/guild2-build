@@ -9,6 +9,7 @@ import { SubJobKeys } from '~/hooks/useSubJub';
 // material-ui
 import Typography from '@material-ui/core/Typography';
 import Chip from '@material-ui/core/Chip';
+import Avatar from '@material-ui/core/Avatar';
 
 // styles
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
@@ -25,6 +26,17 @@ const useStyles = makeStyles((theme: Theme) =>
         margin: theme.spacing(0.5),
       },
     },
+    avatarSelected: {
+      color: `${theme.palette.primary.main} !important`,
+      backgroundColor: `${theme.palette.primary.contrastText} !important`,
+    },
+    avatar: {
+      color: theme.palette.primary.contrastText,
+      backgroundColor: theme.palette.primary.main,
+      '& img': {
+        filter: 'invert(1)',
+      },
+    },
     title: {
       margin: theme.spacing(4, 0, 1),
     },
@@ -35,6 +47,7 @@ const Form = () => {
   const {
     getOriginKey,
     getOriginKeys,
+    getOriginIcon,
     selectOrigin,
     getJobKey,
     getJobKeys,
@@ -72,8 +85,14 @@ const Form = () => {
             component="li"
             clickable
             label={origin}
+            avatar={
+              <Avatar alt={origin} src={`/icons/${getOriginIcon(origin)}`} />
+            }
             variant={origin === selectedOrigin ? 'default' : 'outlined'}
             color="primary"
+            classes={{
+              avatarColorPrimary: origin === selectedOrigin ? styles.avatarSelected : styles.avatar,
+            }}
             onClick={() => onChangeOrigin(origin)}
           />
         ))}

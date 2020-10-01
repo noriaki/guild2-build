@@ -18,4 +18,24 @@ const origins = {
   サイボーグ: ['ボ', 'ボーグ'],
 } as const;
 
+export const originIcons = {
+  人間: 'origins/male-001.png',
+  ピグミーチャム: 'origins/male-002.png',
+  ノーム: 'origins/male-003.png',
+  ドワーフ: 'origins/male-004.png',
+  ダークエルフ: 'origins/male-005.png',
+  吸血鬼: 'origins/male-006.png',
+  エルフ: 'origins/female-002.png',
+  サイキック: 'origins/female-003.png',
+  ワーキャット: 'origins/female-004.png',
+  ドラゴニュート: 'origins/female-005.png',
+  アマゾネス: 'origins/female-006.png',
+  魔造生物: 'origins/unkown-001.png',
+  アンデッドマン: 'origins/unkown-002.png',
+  巨人: 'origins/unkown-003.png',
+  天狗: 'origins/unkown-004.png',
+  鬼: 'origins/unkown-005.png',
+  サイボーグ: 'origins/unkown-006.png',
+} as const;
+
 export default origins;
