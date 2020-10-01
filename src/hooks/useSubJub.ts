@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
-import jobs from '~/data/jobs';
+import jobs, { jobIcons } from '~/data/jobs';
+import { JobKeys } from './useJob';
 
 const subJobs = {
   マスター: 'M',
@@ -33,12 +34,15 @@ const useSubJob = (initialValue?: SubJobValues) => {
     return null;
   };
 
+  const getSubJobIcon = (key: JobKeys) => jobIcons[key];
+
   return {
     subJob,
     setSubJob,
     selectSubJob,
     getSubJobKey,
     getSubJobKeys,
+    getSubJobIcon,
   };
 };
 

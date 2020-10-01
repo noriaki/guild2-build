@@ -51,9 +51,11 @@ const Form = () => {
     selectOrigin,
     getJobKey,
     getJobKeys,
+    getJobIcon,
     selectJob,
     getSubJobKey,
     getSubJobKeys,
+    getSubJobIcon,
     selectSubJob,
     getPersonalityKey,
     getPersonalityKeys,
@@ -110,8 +112,13 @@ const Form = () => {
             component="li"
             clickable
             label={job}
+            avatar={<Avatar alt={job} src={`/icons/${getJobIcon(job)}`} />}
             variant={job === selectedJob ? 'default' : 'outlined'}
             color="primary"
+            classes={{
+              avatarColorPrimary:
+                job === selectedJob ? styles.avatarSelected : styles.avatar,
+            }}
             onClick={() => onChangeJob(job)}
           />
         ))}
@@ -128,8 +135,24 @@ const Form = () => {
                 component="li"
                 clickable
                 label={subJob}
+                avatar={
+                  subJob === 'マスター' ? (
+                    <Avatar alt={subJob}>M</Avatar>
+                  ) : (
+                    <Avatar
+                      alt={subJob}
+                      src={`/icons/${getSubJobIcon(subJob)}`}
+                    />
+                  )
+                }
                 variant={subJob === selectedSubJob ? 'default' : 'outlined'}
                 color="primary"
+                classes={{
+                  avatarColorPrimary:
+                    subJob === selectedSubJob
+                      ? styles.avatarSelected
+                      : styles.avatar,
+                }}
                 onClick={() => onChangeSubJob(subJob)}
               />
             ),
