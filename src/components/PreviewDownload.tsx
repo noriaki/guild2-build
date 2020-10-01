@@ -4,6 +4,7 @@ import Konva from 'konva';
 
 import useCharactorIcon from '~/hooks/useCharactorIcon';
 import CharactorContainer from '~/containers/CharactorContainer';
+import { trackEvent } from '~/libs/analytics';
 
 // components
 import TextRect from './text-rect';
@@ -63,6 +64,12 @@ const PreviewDownload = () => {
   const onClickToImageDL = () => {
     const charText = getCharactorText();
     if (charText !== '' && ref.current != null) {
+      trackEvent({
+        action: 'click',
+        category: 'download_image',
+        label: charText,
+      });
+
       const link = document.createElement('a');
       link.download = `冒ギル2-${charText}.png`;
       link.href = ref.current.toDataURL();
@@ -76,6 +83,12 @@ const PreviewDownload = () => {
     if (charText !== '') {
       navigator.clipboard.writeText(charText).then(
         () => {
+          trackEvent({
+            action: 'click',
+            category: 'copy_text',
+            label: charText,
+          });
+
           console.log(`copy "${charText}"`);
         },
         () => {

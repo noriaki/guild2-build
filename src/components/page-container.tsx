@@ -2,7 +2,9 @@ import React, { FC } from 'react';
 import Head from 'next/head';
 import Router from 'next/router';
 
-Router.events.on('routeChangeComplete', (url) => console.log(url));
+import { trackPageview } from '~/libs/analytics';
+
+Router.events.on('routeChangeComplete', (url) => trackPageview(url));
 
 type FCwithProps = FC<{
   title?: string;
