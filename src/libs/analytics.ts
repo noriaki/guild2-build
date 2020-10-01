@@ -16,7 +16,7 @@ type TrackEventProps = {
   action: string;
   category?: string;
   label?: string;
-  value?: string | number;
+  value?: number;
 };
 
 export const trackEvent = ({
