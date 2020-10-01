@@ -64,7 +64,11 @@ const PreviewDownload = () => {
   const onClickToImageDL = () => {
     const charText = getCharactorText();
     if (charText !== '' && ref.current != null) {
-      trackEvent({ action: 'click', category: 'download_image', label: charText });
+      trackEvent({
+        action: 'click',
+        category: 'download_image',
+        label: charText,
+      });
 
       const link = document.createElement('a');
       link.download = `冒ギル2-${charText}.png`;
