@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import jobs from '~/data/jobs';
+import jobs, { jobIcons } from '~/data/jobs';
 
 export type JobKeys = keyof typeof jobs;
 export type JobValues = typeof jobs[JobKeys];
@@ -24,12 +24,15 @@ const useJob = (initialValue?: JobValues) => {
     return null;
   };
 
+  const getJobIcon = (key: JobKeys) => jobIcons[key];
+
   return {
     job,
     setJob,
     selectJob,
     getJobKey,
     getJobKeys,
+    getJobIcon,
   };
 };
 
