@@ -91,7 +91,10 @@ const Form = () => {
             variant={origin === selectedOrigin ? 'default' : 'outlined'}
             color="primary"
             classes={{
-              avatarColorPrimary: origin === selectedOrigin ? styles.avatarSelected : styles.avatar,
+              avatarColorPrimary:
+                origin === selectedOrigin
+                  ? styles.avatarSelected
+                  : styles.avatar,
             }}
             onClick={() => onChangeOrigin(origin)}
           />
@@ -142,10 +145,17 @@ const Form = () => {
             component="li"
             clickable
             label={personality}
+            avatar={<Avatar alt={personality}>{personality[0]}</Avatar>}
             variant={
               personality === selectedPersonality ? 'default' : 'outlined'
             }
             color="primary"
+            classes={{
+              avatarColorPrimary:
+                personality === selectedPersonality
+                  ? styles.avatarSelected
+                  : styles.avatar,
+            }}
             onClick={() => onChangePersonality(personality)}
           />
         ))}
