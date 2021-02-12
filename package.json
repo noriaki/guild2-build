@@ -29,7 +29,7 @@
     "react-dom": "16.14.0",
     "react-konva": "16.13.0-6",
     "unstated-next": "1.1.0",
-    "use-image": "1.0.6"
+    "use-image": "1.0.7"
   },
   "devDependencies": {
     "@types/gtag.js": "0.0.4",
