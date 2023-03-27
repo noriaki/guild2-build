@@ -23,7 +23,7 @@
   "homepage": "https://github.com/noriaki/guild2-build#readme",
   "dependencies": {
     "@material-ui/core": "4.12.4",
-    "konva": "7.2.5",
+    "konva": "8.4.3",
     "next": "9.5.5",
     "react": "16.14.0",
     "react-dom": "16.14.0",
