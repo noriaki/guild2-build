@@ -24,7 +24,7 @@
   "dependencies": {
     "@material-ui/core": "4.12.4",
     "konva": "7.2.5",
-    "next": "9.5.5",
+    "next": "12.1.0",
     "react": "16.14.0",
     "react-dom": "16.14.0",
     "react-konva": "16.13.0-6",
